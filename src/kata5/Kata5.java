@@ -1,6 +1,8 @@
 
 package kata5;
 
+import java.util.List;
+
 
 
 public class Kata5 {
@@ -11,6 +13,13 @@ public class Kata5 {
         
         CrearTabla crearTabla = new CrearTabla();
         crearTabla.createNewTable();
+        
+        
+         String cadena = new String("email.txt");
+         List<String> mail = MailListReader.read(cadena);
+
+         InsertarDatosTabla insertarDatosTabla = new InsertarDatosTabla();
+         insertarDatosTabla.insert(mail);
     }
     
 }
