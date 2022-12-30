@@ -13,10 +13,11 @@ public class SelectApp {
     
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:flights.db";
+        String url = "jdbc:sqlite:Kata5.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
+            System.out.println("Connexión a SQLite establecida");
         } catch (SQLException e) {
          System.out.println(e.getMessage());
         }
@@ -25,7 +26,7 @@ public class SelectApp {
     
     // Se seleccionan todos los registros de la tabla PEOPLE
     public void selectAll(){
-        String sql = "SELECT * FROM FLIGHTS";
+        String sql = "SELECT * FROM PEOPLE";
         
         try (Connection conn = this.connect();
             Statement stmt = conn.createStatement();
@@ -34,15 +35,10 @@ public class SelectApp {
             // Bucle sobre el conjunto de registros.
             
             while (rs.next()) {
-                System.out.println(
-                    rs.getString("DAY_OF_WEEK") + "\t" +
-                    rs.getString("DEP_TIME") + "\t" +
-                    rs.getString("DEP_DELAY") + "\t" +
-                    rs.getString("ARR_TIME") + "\t" +
-                    rs.getString("ARR_DELAY") + "\t" +
-                    rs.getString("CANCELLED") + "\t" +
-                    rs.getString("AIR_TIME") + "\t" +
-                    rs.getString("DISTANCE") + "\t");
+                 System.out.println(rs.getInt("id") + "\t" +
+                    rs.getString("Name") + "\t" +
+                    rs.getString("Apellidos") + "\t" +
+                    rs.getString("Departamento") + "\t");
             }
             
         } catch (SQLException e) {
